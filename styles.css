@@ -1,0 +1,24 @@
+html {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0rem;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center {
+	/* background-color: lime; */
+	width: 30rem;
+	height: 30rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+button {
+	/* background-color: hsla(180, 50%, 50%, 70); */
+}
