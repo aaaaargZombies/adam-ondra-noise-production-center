@@ -40,8 +40,7 @@ let buttons = [...document.getElementsByTagName("button")];
 
 buttons.forEach((btn, i) => {
 	btn.onclick = () => {
-		let audio = new Audio(paths[i]);
-		audio.play();
+		new Audio(paths[i]).play();
 	};
 });
 
