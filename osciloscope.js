@@ -38,6 +38,9 @@ let audio = new Audio(paths[0]);
 
 let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 let analyser = audioCtx.createAnalyser();
+analyser.minDecibels = -90;
+analyser.maxDecibels = -10;
+analyser.smoothingTimeConstant = 0.85;
 
 let source = audioCtx.createMediaElementSource(audio);
 source.connect(analyser);
@@ -56,7 +59,7 @@ const line = (dataArray, bufferLength, variance, startPos, canvas, ctx) => {
 	let x = 0;
 	for (var i = 0; i < bufferLength; i++) {
 		var vv = dataArray[i] / 128.0; // value between 0 - 2;
-		var v = vv > 1 ? 1 : vv;
+		var v = vv >= 1 ? 1 - (vv - 1) : vv;
 		var y = v * variance + startPos - variance;
 
 		// v = height * 0.125 * v;
@@ -80,6 +83,7 @@ const draw = () => {
 	requestAnimationFrame(draw);
 
 	analyser.getByteTimeDomainData(dataArray);
+	// analyser.getByteFrequencyData(dataArray);
 
 	ctx.fillStyle = "rgb(20, 20, 20)";
 	ctx.fillRect(0, 0, width, height);
@@ -89,22 +93,25 @@ const draw = () => {
 
 	let vertSpace = height / 17;
 
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 1, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 2, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 3, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 4, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 5, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 6, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 7, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 8, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 9, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 10, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 11, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 12, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 13, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 14, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 15, canvas, ctx);
-	// line(dataArray, bufferLength, vertSpace * 2, vertSpace * 16, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 1, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 2, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 3, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 4, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 5, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 6, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 7, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 8, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 9, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 10, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 11, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 12, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 13, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 14, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 15, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 16, canvas, ctx);
 };
 
 draw();
+
+let a = [0, 0.1, 0.2, 0.3, 0.5, 0.8, 1, 1.1, 1.3, 1.5, 1.6, 1.8, 1.9, 2];
+a.map(x => (x >= 1 ? 1 - (x - 1) : x));

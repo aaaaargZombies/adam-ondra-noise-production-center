@@ -17,8 +17,6 @@ let paths = [
 	"./audio/percusive_01.mp3"
 ];
 
-var barHeight;
-
 const $ = q => document.querySelector(q);
 const $$ = q => document.querySelectorAll(q);
 
@@ -31,8 +29,10 @@ let ctx = canvas.getContext("2d");
 
 $("body").onkeydown = e => {
 	if (e.key === " ") {
+		console.log(dataArray);
 		e.preventDefault();
 		audio.play();
+		setTimeout(() => console.log(dataArray), 1000);
 	}
 };
 
@@ -60,7 +60,8 @@ const draw = () => {
 	ctx.fillStyle = "rgb(0, 0, 0)";
 	ctx.fillRect(0, 0, width, height);
 
-	barWidth = (width / bufferLength) * 2.5;
+	var barWidth = (width / bufferLength) * 2.5;
+	var barHeight;
 	var x = 0;
 
 	for (var i = 0; i < bufferLength; i++) {
@@ -72,3 +73,5 @@ const draw = () => {
 		x += barWidth + 1;
 	}
 };
+
+draw();
