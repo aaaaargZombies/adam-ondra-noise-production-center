@@ -1,0 +1,13 @@
+* {
+	box-shadow: content;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #141414;
+}
+
+canvas {
+	position: fixed;
+}
