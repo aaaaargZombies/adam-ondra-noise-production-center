@@ -93,22 +93,22 @@ const draw = () => {
 
 	let vertSpace = height / 17;
 
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 1, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 2, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 3, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 4, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 5, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 6, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 7, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 8, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 9, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 10, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 11, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 12, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 13, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 14, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 15, canvas, ctx);
-	line(dataArray, bufferLength, vertSpace * 3, vertSpace * 16, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 1, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 2, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 3, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 4, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 5, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 6, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 7, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 8, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 9, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 10, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 11, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 12, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 13, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 14, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 15, canvas, ctx);
+	line(dataArray, bufferLength, vertSpace * 4, vertSpace * 16, canvas, ctx);
 };
 
 draw();
