@@ -6,7 +6,7 @@ An experiment with the web audio api, canvas and react. Inspired by the album ar
 
 ![preview](./readme/stage1.gif)
 
-The plan is for it too look a bit more like this;
+The plan is for it to look a bit more like this;
 
 ![mock up](./readme/mock_1.png)
 ![mock up](./readme/mock_2.png)
