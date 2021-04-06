@@ -1,0 +1,91 @@
+{
+  "main": {
+    "id": "a08aa3704aabeebb",
+    "type": "split",
+    "children": [
+      {
+        "id": "39d58d3f7f6ef7cf",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0ed059cef9f7c318",
+    "type": "split",
+    "children": [
+      {
+        "id": "68e00082d770551a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "130786a73f1deaad",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "5af2c51d0db53df2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fdfc02ebd7280677",
+    "type": "split",
+    "children": [
+      {
+        "id": "e19e63e0556d21ec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b96a8f00fd2235f4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "README.md"
+  ]
+}
