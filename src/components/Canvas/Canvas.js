@@ -7,6 +7,7 @@ class Canvas extends React.Component {
 	}
 
 	componentDidMount() {
+		const jitter = n => Math.floor(Math.random() * n);
 		let canvas = this.canvasRef.current;
 		let ctx = canvas.getContext("2d");
 		let width = canvas.width;
@@ -40,7 +41,7 @@ class Canvas extends React.Component {
 			for (var i = 0; i < bufferLength; i++) {
 				var vv = dataArray[i] / 128.0; // value between 0 - 2;
 				var v = vv >= 1 ? 1 - (vv - 1) : vv;
-				var y = v * variance + startPos - variance;
+				var y = v * variance + startPos - variance + jitter(4);
 
 				// v = height * 0.125 * v;
 				// var y = height * 0.0625 * 13 + v;
@@ -67,7 +68,7 @@ class Canvas extends React.Component {
 			ctx.fillStyle = "rgb(20, 20, 20)";
 			ctx.fillRect(0, 0, width, height);
 
-			ctx.lineWidth = 2;
+			ctx.lineWidth = 4;
 			ctx.strokeStyle = "rgb(255,255,255)";
 
 			let vertSpace = height / 17;
@@ -83,23 +84,6 @@ class Canvas extends React.Component {
 					ctx
 				);
 			});
-
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 1, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 2, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 3, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 4, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 5, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 6, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 7, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 8, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 9, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 10, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 11, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 12, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 13, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 14, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 15, canvas, ctx);
-			// line(dataArray, bufferLength, vertSpace * 4, vertSpace * 16, canvas, ctx);
 		};
 
 		draw();
