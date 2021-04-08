@@ -7,7 +7,6 @@ class Canvas extends React.Component {
 	}
 
 	componentDidMount() {
-		const jitter = n => Math.floor(Math.random() * n);
 		let canvas = this.canvasRef.current;
 		let ctx = canvas.getContext("2d");
 		let width = canvas.width;
@@ -32,16 +31,21 @@ class Canvas extends React.Component {
 			return { analyser, bufferLength, dataArray };
 		});
 
-		ctx.clearRect(0, 0, width, height);
+		const jitter = n => Math.floor(Math.random() * n);
+		const negativeValue = v => (v >= 1 ? 1 - (v - 1) : v);
 
 		const line = (dataArray, bufferLength, variance, startPos, canvas, ctx) => {
 			ctx.beginPath();
 			let sliceWidth = (width * 1.0) / bufferLength;
 			let x = 0;
 			for (var i = 0; i < bufferLength; i++) {
-				var vv = dataArray[i] / 128.0; // value between 0 - 2;
-				var v = vv >= 1 ? 1 - (vv - 1) : vv;
-				var y = v * variance + startPos - variance + jitter(4);
+				var frequencyVal = dataArray[i] / 128.0; // value between 0 - 2;
+				// var v = vv >= 1 ? 1 - (vv - 1) : vv;
+				var y =
+					negativeValue(frequencyVal) * variance +
+					startPos -
+					variance +
+					jitter(4);
 
 				// v = height * 0.125 * v;
 				// var y = height * 0.0625 * 13 + v;
@@ -86,6 +90,7 @@ class Canvas extends React.Component {
 			});
 		};
 
+		ctx.clearRect(0, 0, width, height);
 		draw();
 	}
 
