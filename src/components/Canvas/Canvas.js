@@ -34,7 +34,7 @@ class Canvas extends React.Component {
 		const jitter = n => Math.floor(Math.random() * n);
 		const negativeValue = v => (v >= 1 ? 1 - (v - 1) : v);
 
-		const line = (dataArray, bufferLength, variance, startPos, canvas, ctx) => {
+		const line = (dataArray, bufferLength, variance, startPos) => {
 			ctx.beginPath();
 			let sliceWidth = (width * 1.0) / bufferLength;
 			let x = 0;
@@ -64,6 +64,19 @@ class Canvas extends React.Component {
 			ctx.stroke();
 		};
 
+		const drawGrid = barWidth => {
+			// return;
+			// ctx.fillRect(0, width / 3 - barWidth, barWidth, height);
+			let spacing = (width - barWidth * 3) / 4;
+			// let offSet = barWidth / 2;
+			ctx.fillRect(spacing * 1 + barWidth * 0, 0, barWidth, height);
+			ctx.fillRect(spacing * 2 + barWidth * 1, 0, barWidth, height);
+			ctx.fillRect(spacing * 3 + barWidth * 2, 0, barWidth, height);
+			ctx.fillRect(0, spacing * 1 + barWidth * 0, width, barWidth);
+			ctx.fillRect(0, spacing * 2 + barWidth * 1, width, barWidth);
+			ctx.fillRect(0, spacing * 3 + barWidth * 2, width, barWidth);
+		};
+
 		const draw = () => {
 			requestAnimationFrame(draw);
 
@@ -72,10 +85,8 @@ class Canvas extends React.Component {
 			ctx.fillStyle = "rgb(20, 20, 20)";
 			ctx.fillRect(0, 0, width, height);
 
-			ctx.lineWidth = 4;
+			ctx.lineWidth = 2;
 			ctx.strokeStyle = "rgb(255,255,255)";
-
-			let vertSpace = height / 17;
 
 			analysers.forEach((a, i) => {
 				a.analyser.getByteTimeDomainData(a.dataArray);
@@ -88,6 +99,8 @@ class Canvas extends React.Component {
 					ctx
 				);
 			});
+
+			drawGrid(40);
 		};
 
 		ctx.clearRect(0, 0, width, height);
