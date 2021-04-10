@@ -118,3 +118,5 @@ dist
 audioSources/
 # visual notes
 visualResearch/
+# create-react-app build folder
+build/
