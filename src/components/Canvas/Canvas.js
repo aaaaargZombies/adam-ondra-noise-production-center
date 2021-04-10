@@ -12,6 +12,7 @@ class Canvas extends React.Component {
 		let width = canvas.width;
 		let height = canvas.height;
 		let vertSpace = height / 17;
+		let barWidth = 38;
 		let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 		let analysers = this.props.audioFiles.map(file => {
 			let analyser = audioCtx.createAnalyser();
@@ -65,10 +66,7 @@ class Canvas extends React.Component {
 		};
 
 		const drawGrid = barWidth => {
-			// return;
-			// ctx.fillRect(0, width / 3 - barWidth, barWidth, height);
 			let spacing = (width - barWidth * 3) / 4;
-			// let offSet = barWidth / 2;
 			ctx.fillRect(spacing * 1 + barWidth * 0, 0, barWidth, height);
 			ctx.fillRect(spacing * 2 + barWidth * 1, 0, barWidth, height);
 			ctx.fillRect(spacing * 3 + barWidth * 2, 0, barWidth, height);
@@ -90,17 +88,16 @@ class Canvas extends React.Component {
 
 			analysers.forEach((a, i) => {
 				a.analyser.getByteTimeDomainData(a.dataArray);
-				line(
-					a.dataArray,
-					a.bufferLength,
-					vertSpace * 4,
-					vertSpace * (i + 1),
-					canvas,
-					ctx
-				);
+				let startPos = [height]
+					.map(x => x - barWidth * 3) // equally devide visible space.
+					.map(x => x / 17) // 16 plots + space equal padding from base of canvas.
+					.map(x => x * (i + 1)) // move down a step each time the array increments.
+					.map(x => x + barWidth * Math.floor(i / 4))[0]; // add to avoid the none visible area formed by the grid.
+
+				line(a.dataArray, a.bufferLength, vertSpace * 4, startPos, canvas, ctx);
 			});
 
-			drawGrid(40);
+			drawGrid(barWidth);
 		};
 
 		ctx.clearRect(0, 0, width, height);
