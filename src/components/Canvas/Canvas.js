@@ -95,6 +95,14 @@ class Canvas extends React.Component {
 					.map(x => x + barWidth * Math.floor(i / 4))[0]; // add to avoid the none visible area formed by the grid.
 
 				line(a.dataArray, a.bufferLength, vertSpace * 4, startPos, canvas, ctx);
+				line(
+					a.dataArray,
+					a.bufferLength,
+					vertSpace * 4,
+					startPos - vertSpace / 2.3,
+					canvas,
+					ctx
+				);
 			});
 
 			drawGrid(barWidth);
