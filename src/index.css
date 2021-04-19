@@ -12,7 +12,9 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	font-size: calc(10px + 2vmin);
-	background-color: #131313;
+	/* background-color: #131313; */
+	background-color: rgb(10, 10, 10);
+
 	color: white;
 	display: flex;
 	flex-direction: column;

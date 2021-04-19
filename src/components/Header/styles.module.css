@@ -3,10 +3,18 @@
 	width: 100%;
 	justify-content: space-between;
 	align-items: baseline;
+	padding: 0 1%;
+	padding-top: 2vmin;
 }
 .title {
 	padding-top: 3vmin;
 	letter-spacing: 0.1rem;
 	font-weight: 400;
 	font-size: 5vmin;
+}
+.btn {
+	color: white;
+	font-size: 5vmin;
+	background-color: transparent;
+	border: none;
 }

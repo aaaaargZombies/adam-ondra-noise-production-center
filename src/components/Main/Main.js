@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import Canvas from "../Canvas/Canvas";
 import Btn from "../Btn/Btn";
+import Info from "../Info/Info";
 import file0 from "../../audio/moan_01.mp3";
 import file1 from "../../audio/moan_02.mp3";
 import file2 from "../../audio/shreak_03.mp3";
@@ -55,10 +56,13 @@ class Main extends React.Component {
 		return (
 			<main className={styles.grid}>
 				<Canvas audioFiles={this.audioFiles} />
-				{this.audioFiles.map((file, i) => (
-					<Btn key={i} handleClick={() => this.handleClick(file)} />
-				))}
-				{this.props.children}
+				{this.props.info ? (
+					<Info />
+				) : (
+					this.audioFiles.map((file, i) => (
+						<Btn key={i} handleClick={() => this.handleClick(file)} />
+					))
+				)}
 			</main>
 		);
 	}

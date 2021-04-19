@@ -80,7 +80,7 @@ class Canvas extends React.Component {
 
 			// analyser.getByteFrequencyData(dataArray);
 
-			ctx.fillStyle = "rgb(20, 20, 20)";
+			ctx.fillStyle = "rgb(10, 10, 10)";
 			ctx.fillRect(0, 0, width, height);
 
 			ctx.lineWidth = 2;
