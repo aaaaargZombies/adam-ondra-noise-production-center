@@ -3,22 +3,22 @@ import styles from "./styles.module.css";
 import Canvas from "../Canvas/Canvas";
 import Btn from "../Btn/Btn";
 import Info from "../Info/Info";
-import file0 from "../../audio/moan_01.mp3";
-import file1 from "../../audio/moan_02.mp3";
-import file2 from "../../audio/shreak_03.mp3";
-import file3 from "../../audio/shreak_01.mp3";
-import file4 from "../../audio/weird_03.mp3";
-import file5 from "../../audio/weird_01.mp3";
-import file6 from "../../audio/weird_04.mp3";
-import file7 from "../../audio/weird_02.mp3";
-import file8 from "../../audio/growl_01.mp3";
-import file9 from "../../audio/growl_02.mp3";
-import file10 from "../../audio/shortOoooh_01.mp3";
-import file11 from "../../audio/shortOoooh_03.mp3";
-import file12 from "../../audio/breath_08.mp3";
-import file13 from "../../audio/percusive_02.mp3";
-import file14 from "../../audio/percusive_03.mp3";
-import file15 from "../../audio/percusive_01.mp3";
+import file0 from "../../audio/moan-01.mp3";
+import file1 from "../../audio/moan-02.mp3";
+import file2 from "../../audio/shreak-03.mp3";
+import file3 from "../../audio/shreak-01.mp3";
+import file4 from "../../audio/weird-03.mp3";
+import file5 from "../../audio/weird-01.mp3";
+import file6 from "../../audio/weird-04.mp3";
+import file7 from "../../audio/weird-02.mp3";
+import file8 from "../../audio/growl-01.mp3";
+import file9 from "../../audio/growl-02.mp3";
+import file10 from "../../audio/shortOoooh-01.mp3";
+import file11 from "../../audio/shortOoooh-03.mp3";
+import file12 from "../../audio/breath-08.mp3";
+import file13 from "../../audio/percusive-02.mp3";
+import file14 from "../../audio/percusive-03.mp3";
+import file15 from "../../audio/percusive-01.mp3";
 
 class Main extends React.Component {
 	constructor(props) {

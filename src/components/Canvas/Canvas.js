@@ -90,7 +90,7 @@ class Canvas extends React.Component {
 				a.analyser.getByteTimeDomainData(a.dataArray);
 				let startPos = [height]
 					.map(x => x - barWidth * 3) // equally devide visible space.
-					.map(x => x / 17) // 16 plots + space equal padding from base of canvas.
+					.map(x => x / 16.5) // 16 plots + space equal padding from base of canvas.
 					.map(x => x * (i + 1)) // move down a step each time the array increments.
 					.map(x => x + barWidth * Math.floor(i / 4))[0]; // add to avoid the none visible area formed by the grid.
 
@@ -98,7 +98,7 @@ class Canvas extends React.Component {
 				line(
 					a.dataArray,
 					a.bufferLength,
-					vertSpace * 4,
+					vertSpace,
 					startPos - vertSpace / 2.3,
 					canvas,
 					ctx
