@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./styles.module.css";
-class Canvas extends React.Component {
-	constructor(props) {
-		super(props);
-		this.canvasRef = React.createRef();
-	}
 
-	componentDidMount() {
-		let canvas = this.canvasRef.current;
+const Canvas = (props) => {
+	const canvasRef = useRef(null);
+
+	const didRender = () => {
+		let canvas = canvasRef.current;
 		let ctx = canvas.getContext("2d");
 		let width = canvas.width;
 		let height = canvas.height;
 		let vertSpace = height / 17;
 		let barWidth = 38;
 		let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-		let analysers = this.props.audioFiles.map(file => {
+		let analysers = props.audioFiles.map((file) => {
 			let analyser = audioCtx.createAnalyser();
 			analyser.minDecibels = -90;
 			analyser.maxDecibels = -10;
@@ -32,8 +30,8 @@ class Canvas extends React.Component {
 			return { analyser, bufferLength, dataArray };
 		});
 
-		const jitter = n => Math.floor(Math.random() * n);
-		const negativeValue = v => (v >= 1 ? 1 - (v - 1) : v);
+		const jitter = (n) => Math.floor(Math.random() * n);
+		const negativeValue = (v) => (v >= 1 ? 1 - (v - 1) : v);
 
 		const line = (dataArray, bufferLength, variance, startPos) => {
 			ctx.beginPath();
@@ -65,7 +63,7 @@ class Canvas extends React.Component {
 			ctx.stroke();
 		};
 
-		const drawGrid = barWidth => {
+		const drawGrid = (barWidth) => {
 			let spacing = (width - barWidth * 3) / 4;
 			ctx.fillRect(spacing * 1 + barWidth * 0, 0, barWidth, height);
 			ctx.fillRect(spacing * 2 + barWidth * 1, 0, barWidth, height);
@@ -89,10 +87,10 @@ class Canvas extends React.Component {
 			analysers.forEach((a, i) => {
 				a.analyser.getByteTimeDomainData(a.dataArray);
 				let startPos = [height]
-					.map(x => x - barWidth * 3) // equally devide visible space.
-					.map(x => x / 16.5) // 16 plots + space equal padding from base of canvas.
-					.map(x => x * (i + 1)) // move down a step each time the array increments.
-					.map(x => x + barWidth * Math.floor(i / 4))[0]; // add to avoid the none visible area formed by the grid.
+					.map((x) => x - barWidth * 3) // equally devide visible space.
+					.map((x) => x / 16.5) // 16 plots + space equal padding from base of canvas.
+					.map((x) => x * (i + 1)) // move down a step each time the array increments.
+					.map((x) => x + barWidth * Math.floor(i / 4))[0]; // add to avoid the none visible area formed by the grid.
 
 				line(a.dataArray, a.bufferLength, vertSpace * 4, startPos, canvas, ctx);
 				line(
@@ -101,7 +99,7 @@ class Canvas extends React.Component {
 					vertSpace,
 					startPos - vertSpace / 2.3,
 					canvas,
-					ctx
+					ctx,
 				);
 			});
 
@@ -110,19 +108,18 @@ class Canvas extends React.Component {
 
 		ctx.clearRect(0, 0, width, height);
 		draw();
-	}
+	};
 
-	render() {
-		// console.log(this.props);
-		return (
-			<canvas
-				className={styles.canvas}
-				ref={this.canvasRef}
-				width="1000"
-				height="1000"
-			/>
-		);
-	}
-}
+	useEffect(didRender);
+
+	return (
+		<canvas
+			className={styles.canvas}
+			ref={canvasRef}
+			width="1000"
+			height="1000"
+		/>
+	);
+};
 
 export default Canvas;
