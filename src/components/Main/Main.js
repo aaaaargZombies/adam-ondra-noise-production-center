@@ -39,7 +39,7 @@ class Main extends React.Component {
 			new Audio(file12),
 			new Audio(file13),
 			new Audio(file14),
-			new Audio(file15)
+			new Audio(file15),
 		];
 		this.handleClick = this.handleClick.bind(this);
 	}
