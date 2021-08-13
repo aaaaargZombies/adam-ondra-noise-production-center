@@ -20,52 +20,46 @@ import file13 from "../../audio/percusive-02.mp3";
 import file14 from "../../audio/percusive-03.mp3";
 import file15 from "../../audio/percusive-01.mp3";
 
-class Main extends React.Component {
-	constructor(props) {
-		super(props);
-		this.audioFiles = [
-			new Audio(file0),
-			new Audio(file1),
-			new Audio(file2),
-			new Audio(file3),
-			new Audio(file4),
-			new Audio(file5),
-			new Audio(file6),
-			new Audio(file7),
-			new Audio(file8),
-			new Audio(file9),
-			new Audio(file10),
-			new Audio(file11),
-			new Audio(file12),
-			new Audio(file13),
-			new Audio(file14),
-			new Audio(file15),
-		];
-		this.handleClick = this.handleClick.bind(this);
-	}
+const audioFiles = [
+	new Audio(file0),
+	new Audio(file1),
+	new Audio(file2),
+	new Audio(file3),
+	new Audio(file4),
+	new Audio(file5),
+	new Audio(file6),
+	new Audio(file7),
+	new Audio(file8),
+	new Audio(file9),
+	new Audio(file10),
+	new Audio(file11),
+	new Audio(file12),
+	new Audio(file13),
+	new Audio(file14),
+	new Audio(file15),
+];
 
-	handleClick(file) {
-		if (file.paused) {
-			file.play();
-		} else {
-			file.currentTime = 0;
-		}
+const handleClick = (file) => {
+	if (file.paused) {
+		file.play();
+	} else {
+		file.currentTime = 0;
 	}
+};
 
-	render() {
-		return (
-			<main className={styles.grid}>
-				<Canvas audioFiles={this.audioFiles} />
-				{this.props.info ? (
-					<Info />
-				) : (
-					this.audioFiles.map((file, i) => (
-						<Btn key={i} handleClick={() => this.handleClick(file)} />
-					))
-				)}
-			</main>
-		);
-	}
-}
+const Main = (props) => {
+	return (
+		<main className={styles.grid}>
+			<Canvas audioFiles={audioFiles} />
+			{props.info ? (
+				<Info />
+			) : (
+				audioFiles.map((file, i) => (
+					<Btn key={i} handleClick={() => handleClick(file)} />
+				))
+			)}
+		</main>
+	);
+};
 
 export default Main;
