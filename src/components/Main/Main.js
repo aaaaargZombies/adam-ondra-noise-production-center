@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./styles.module.css";
 import Canvas from "../Canvas/Canvas";
 import Btn from "../Btn/Btn";
@@ -48,16 +48,18 @@ const handleClick = (file) => {
 };
 
 const Main = (props) => {
+	const memoizedBtns = useMemo(
+		() =>
+			audioFiles.map((file, i) => (
+				<Btn key={i} handleClick={() => handleClick(file)} />
+			)),
+		audioFiles,
+	);
+
 	return (
 		<main className={styles.grid}>
 			<Canvas audioFiles={audioFiles} />
-			{props.info ? (
-				<Info />
-			) : (
-				audioFiles.map((file, i) => (
-					<Btn key={i} handleClick={() => handleClick(file)} />
-				))
-			)}
+			{props.info ? <Info /> : memoizedBtns}
 		</main>
 	);
 };
