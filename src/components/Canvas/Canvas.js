@@ -11,7 +11,7 @@ const Canvas = (props) => {
 		let height = canvas.height;
 		let vertSpace = height / 17;
 		let barWidth = 38;
-		let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+		let audioCtx = props.audioCtx;
 		let analysers = props.audioFiles.map((file) => {
 			let analyser = audioCtx.createAnalyser();
 			analyser.minDecibels = -90;

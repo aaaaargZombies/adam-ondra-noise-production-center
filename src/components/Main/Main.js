@@ -40,6 +40,8 @@ const audioFiles = [
 ];
 
 const handleClick = (file) => {
+	// chrome will not play audio unless you trigger this via a user gesture
+	audioCtx.resume();
 	if (file.paused) {
 		file.play();
 	} else {
@@ -51,9 +53,13 @@ const Btns = audioFiles.map((file, i) => (
 	<Btn key={i} handleClick={() => handleClick(file)} />
 ));
 
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+const canvas = <Canvas audioFiles={audioFiles} audioCtx={audioCtx} />;
+
 const Main = (props) => (
 	<main className={styles.grid}>
-		<Canvas audioFiles={audioFiles} />
+		{canvas}
 		{props.info ? <Info /> : Btns}
 	</main>
 );
